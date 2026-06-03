@@ -36,14 +36,11 @@ export function ContactSection() {
     {
       icon: Phone,
       title: "Call Us",
-      content: "+91 99007 97419",
-      link: "tel:+919900797419",
-    },
-    {
-      icon: Phone,
-      title: "Call Us",
-      content: "+91 90089 10419",
-      link: "tel:+919008910419",
+      content: null,
+      numbers: [
+        { label: "+91 99007 97419", link: "tel:+919900797419" },
+        { label: "+91 90089 10419", link: "tel:+919008910419" },
+      ],
     },
     {
       icon: Mail,
@@ -220,7 +217,19 @@ export function ContactSection() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-foreground mb-1">{info.title}</h4>
-                    {info.link ? (
+                    {'numbers' in info && info.numbers ? (
+                      <div className="flex flex-col gap-1">
+                        {info.numbers.map((n) => (
+                          <a
+                            key={n.link}
+                            href={n.link}
+                            className="text-muted-foreground hover:text-primary transition-colors"
+                          >
+                            {n.label}
+                          </a>
+                        ))}
+                      </div>
+                    ) : info.link ? (
                       <a 
                         href={info.link} 
                         className="text-muted-foreground hover:text-primary transition-colors"
