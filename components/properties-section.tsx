@@ -122,13 +122,23 @@ function PropertyCard({ property, index }: { property: typeof properties[0]; ind
         </div>
 
         {/* CTA */}
-        <motion.button
+        <motion.a
+          href={`https://wa.me/919900797419?text=${encodeURIComponent(
+            `Hello Manjunath! I'm interested in the following property:\n\n` +
+            `🏠 *${property.title}*\n` +
+            `📍 ${property.location}\n` +
+            `📐 ${property.sqft} sqft\n` +
+            `💰 ${property.price}\n\n` +
+            `Please share more details and arrange a site visit.`
+          )}`}
+          target="_blank"
+          rel="noopener noreferrer"
           whileHover={{ x: 5 }}
           className="flex items-center gap-2 text-primary text-sm font-medium"
         >
           <span>View Details</span>
           <ArrowRight className="w-4 h-4" />
-        </motion.button>
+        </motion.a>
       </div>
     </motion.div>
   )
